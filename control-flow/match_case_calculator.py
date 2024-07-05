@@ -1,6 +1,5 @@
 # match_case_calculator.py
 
-# Function to perform arithmetic operations
 def calculate(num1, num2, operator):
     match operator:
         case '+':
