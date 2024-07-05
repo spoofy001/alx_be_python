@@ -1,30 +1,39 @@
-# daily_reminder.py
-
-def process_task(task, priority, time_bound):
-    message = match priority.lower():
-        case 'high':
-            f"'{task}' is a high priority task"
-        case 'medium':
-            f"'{task}' is a medium priority task"
-        case 'low':
-            f"'{task}' is a low priority task"
-        case _:
-            f"'{task}' has an unrecognized priority"
-
-    if time_bound.lower() == "yes":
-        message += " that requires immediate attention today!"
+def get_user_input(message):
+  """Prompts the user for input and returns the sanitized response."""
+  while True:
+    response = input(message).lower().strip()
+    if response:
+      return response
     else:
-        message += ". Consider completing it when you have free time."
-    
-    return message
+      print("Please enter a valid response.")
 
-# Prompt user for input
-task = input("Enter your task: ")
-priority = input("Priority (high/medium/low): ")
-time_bound = input("Is it time-bound? (yes/no): ")
+def main():
+  # Get user input for task, priority, and time sensitivity
+  task = get_user_input("Enter your task: ")
+  priority = get_user_input("Priority (high/medium/low): ")
+  time_bound = get_user_input("Is it time-bound? (yes/no): ")
 
-# Process the task and get the customized reminder
-reminder = process_task(task, priority, time_bound)
+  # Process task based on priority
+  reminder = f"'{task}' is a "
+  match priority:
+    case "high":
+      reminder += "high priority task"
+    case "medium":
+      reminder += "medium priority task"
+    case "low":
+      reminder += "low priority task"
+    case _:
+      print("Invalid priority level. Please enter high, medium, or low.")
+      return
 
-# Print the customized reminder
-print("Reminder:", reminder)
+  # Modify reminder if time-bound
+  if time_bound == "yes":
+    reminder += " that requires immediate attention today!"
+  else:
+    reminder += ". Consider completing it when you have free time."
+
+  # Print the reminder
+  print(reminder)
+
+if __name__ == "__main__":
+  main()
