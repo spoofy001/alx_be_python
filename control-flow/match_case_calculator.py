@@ -17,6 +17,8 @@ def calculate(num1, num2, operator):
                 print(f"The result is {result}.")
             else:
                 print("Cannot divide by zero.")
+        case _:
+            print("Invalid operator entered.")
 
 # Prompt user for input
 num1 = float(input("Enter the first number: "))
