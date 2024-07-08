@@ -18,6 +18,9 @@ def convert_to_fahrenheit(celsius):
     return fahrenheit
 
 def main():
+    """
+    Main function to execute the temperature conversion.
+    """
     try:
         temp = float(input("Enter the temperature to convert: "))
     except ValueError:
